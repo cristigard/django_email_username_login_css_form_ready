@@ -25,7 +25,7 @@ class CustomUserLoginView(SuccessMessageMixin, auth_views.LoginView):
 	form_class = AuthenticationForm
 	template_name = 'users/login.html'
 	redirect_authenticated_user = True
-	success_message = "Login successfully." 
+	success_message = "Welcome %(username)s!" 
 
 	# + redirect_authenticated_user = True -> 
 	# -> send to other view if user is already auth and try to access login page
