@@ -1,0 +1,28 @@
+{% extends 'users/base.html' %}
+{% block content %}
+
+<h3><strong>Update your profile</strong> </h3>
+<br>
+<form method="POST">{%csrf_token%}
+    <div style="background-color:azure; border-radius: 5px;padding: 10px;">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <small style="color: red;">{{form.email.errors}}</small>
+      <input style = "max-width: 300px;" type="email" class="form-control" name=email id="id_email" aria-describedby="emailHelp" required placeholder={{form.email}}
+      <small id="emailHelp" class="form-text text-muted">{{form.username.help_text}}</small>
+    </div>
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <small style="color: red;">{{form.username.errors}}</small>
+      <input style = "max-width: 300px;" type="text" class="form-control" name=username id="id_username" required placeholder={{form.username}}
+      <small id="usernameHelp" class="form-text text-muted">{{form.email.help_text}}</small>
+      {{form.username.errors}}
+    </div>
+    <small style="color:red;">{{ form.non_field_errors }}</small>
+  </div>
+  <small><a href="{% url 'password_change' %}">Change password</a></small>
+  <br><br>
+    <button type="submit" class="btn btn-outline-secondary btn-sm">Update</button>
+  </form>
+
+{% endblock content %}

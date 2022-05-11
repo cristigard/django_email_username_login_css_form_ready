@@ -1,0 +1,27 @@
+{% extends 'users/base.html' %}
+{% block content %}
+    <h3>Login</h3>
+    <p></p>
+    <form method="POST">{%csrf_token%}
+      <div style="background-color:azure; border-radius: 5px;padding: 10px;">
+      <div class="form-group">
+        <label for="username">Email / Username:</label>
+        <small style="color: red;">{{form.username.errors}}</small>
+        <input type="text" class="form-control" name=username id="id_username" aria-describedby="usernameHelp" placeholder="Enter username or email" required>
+        <small id="usernameHelp" class="form-text text-muted">{{form.username.help_text}}</small>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <small style="color: red;">{{form.password.errors}}</small>
+        <input type="password" class="form-control" name=password id="id_assword" placeholder="Password" required>
+        <small id="passwordHelp" class="form-text text-muted">{{form.password.help_text}}</small>
+        {{form.password.errors}}
+      </div>
+      <small style="color:red;">{{ form.non_field_errors }}</small>
+    </div>
+    <div><small>Don't have an account?<a href="{% url 'register' %}"> Register</a></small></div>
+    <div><small>Forget you password?<a href="{% url 'password_reset' %}"> Reset</a></small></div>
+  <p></p><p></p>
+      <button type="submit" class="btn btn-outline-secondary btn-sm">Login</button>
+    </form>
+  {% endblock content %}
